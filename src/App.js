@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { IonButton, IonToast, IonIcon } from '@ionic/react';
+import { colorPalette } from 'ionicons/icons'
+import React, { useState } from 'react';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [showToast, setShowToast] = useState(false);
+	const handleClick = () => {
+		setShowToast(true);
+		setTimeout(() => setShowToast(false), 1500);
+	};
+
+	return (
+		<div className="App">
+			<IonToast isOpen={showToast} message="My first notification" />
+			<IonButton onClick={handleClick}>
+				<IonIcon icon={colorPalette} slot='start' />
+				My first button
+			</IonButton>
+		</div>
+	);
 }
 
 export default App;
